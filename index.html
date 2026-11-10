@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>噗噗英語學伴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  /* Layout: one narrow phone column, read after scanning the QR code at the booth; colors follow the A5 table tent. */
+  :root {
+    --bg: #fff8ec;
+    --panel: #ffffff;
+    --ink: #1d2b3a;
+    --muted: #5a6573;
+    --orange: #e8761c;
+    --green: #2a6f4f;
+    --line: #f0d9b8;
+    --font: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141c26; --panel: #1d2733; --ink: #f3ece0; --muted: #a9b2bd;
+      --orange: #f39a4c; --green: #6cc39a; --line: #33404f; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141c26; --panel: #1d2733; --ink: #f3ece0; --muted: #a9b2bd;
+    --orange: #f39a4c; --green: #6cc39a; --line: #33404f; color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.75; }
+  main {
+    max-width: 34rem; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2.5rem 3rem;
+    display: flex; flex-direction: column; gap: 2.25rem;
+  }
+  header { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
+  header canvas { width: 88px; height: 104px; }
+  h1 { margin: 0; font-size: 2.1rem; font-weight: 900; line-height: 1.2; text-wrap: balance; }
+  .tag { margin: .35rem 0 0; color: var(--green); font-weight: 700; font-size: 1.05rem; }
+  h2 { margin: 0 0 .6rem; font-size: 1.25rem; font-weight: 700; text-wrap: balance; }
+  section p { margin: 0 0 .6rem; }
+  .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .7rem; counter-reset: s; }
+  .steps li { display: grid; grid-template-columns: 2rem 1fr; gap: .6rem; align-items: baseline; counter-increment: s; }
+  .steps li::before { content: counter(s); color: var(--orange); font-weight: 900; font-size: 1.4rem; }
+  .route {
+    background: var(--panel); border: 2px solid var(--line); border-radius: 14px;
+    padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .8rem;
+  }
+  .row { display: grid; grid-template-columns: 6.2rem 1fr; gap: .75rem; }
+  .row b { color: var(--orange); }
+  .row span { min-width: 0; }
+  .note { color: var(--muted); font-size: .95rem; }
+  ul.plain { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .35rem; }
+  .sponsors h2 { margin-bottom: .8rem; }
+  .logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+  .logos figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .4rem; min-width: 0; }
+  /* Same-size white tiles in both themes: the foundation logo is a JPG with a white background. */
+  .logos .tile { width: 100%; height: 72px; background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; padding: .5rem; box-sizing: border-box; }
+  .logos img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  /* The TIARA logo is white on transparent, so it sits on navy. */
+  .logos .tile.dark { background: #1d2b3a; }
+  .logos figcaption { font-size: .85rem; line-height: 1.35; text-align: center; color: var(--ink); }
+  footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+  @media (max-width: 360px) { .row { grid-template-columns: 1fr; gap: .1rem; } }
+</style>
+
+<style>body{margin:0}</style>
+</head>
+<body>
+<main>
+  <header>
+    <canvas id="pupu" width="176" height="208" aria-hidden="true"></canvas>
+    <div>
+      <h1>噗噗<br>AI 英語學伴</h1>
+      <p class="tag">有網路用大腦、沒網路也照常聊</p>
+    </div>
+  </header>
+
+  <section>
+    <h2>噗噗是誰</h2>
+    <p>噗噗是一隻要修好太空船回家的企鵝。孩子用英文跟牠聊天，說得出來就有能量星飛進太空船。說錯沒關係，不要怕出錯，噗噗會陪你一起練習——Practice makes perfect，熟能生巧！</p>
+    <p>說中文、說英文、混著說都可以。課程有 8 個單元，每個單元最後有 3 題密碼小測驗。</p>
+  </section>
+
+  <section>
+    <h2>怎麼玩</h2>
+    <ol class="steps">
+      <li>摸一下螢幕</li>
+      <li>點「地球好朋友」名牌</li>
+      <li>按「按我說話」，說完再按一次</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>噗噗的大腦在哪裡</h2>
+    <div class="route">
+      <div class="row"><b>有網路時</b><span>孩子說的話轉成文字後，送到我們自己架設的伺服器上的大型語言模型，回答更靈活，通常 1 秒內回來。</span></div>
+      <div class="row"><b>沒網路時</b><span>改用板子上的 AI 晶片自己想，對話照常進行，不會停下來等網路。</span></div>
+    </div>
+    <p class="note">兩邊同時開始想，雲端在時限內回來就用雲端的答案，否則用板子上的。展場可以當場拔掉網路試試看。</p>
+  </section>
+
+  <section>
+    <h2>隱私</h2>
+    <ul class="plain">
+      <li>不錄影、不存照片。</li>
+      <li>送到伺服器的只有聊天文字，不含聲音、影像或臉部資料。</li>
+      <li>伺服器不是公用的雲端服務。</li>
+      <li>說完掰掰，這次的對話紀錄就清空。</li>
+    </ul>
+  </section>
+
+  <section class="sponsors">
+    <h2>贊助</h2>
+    <div class="logos">
+      <figure><div class="tile dark"><img src="logos/tiara.png" alt=""></div><figcaption>臺灣半導體產學研發聯盟</figcaption></figure>
+      <figure><div class="tile"><img src="logos/mediatek.svg" alt=""></div><figcaption>聯發科技</figcaption></figure>
+      <figure><div class="tile"><img src="logos/kuanhsin.jpg" alt=""></div><figcaption>冠信教育基金會</figcaption></figure>
+    </div>
+  </section>
+
+  <footer>使用的硬體：MediaTek Genio 720 開發板。語音辨識、語音合成與沒網路時的對話都在板子上完成。</footer>
+</main>
+
+<script>
+  // Pupu drawn on canvas so the page needs no image file.
+  (function () {
+    const c = document.getElementById('pupu');
+    const g = c.getContext('2d');
+    const css = getComputedStyle(document.documentElement);
+    const ink = css.getPropertyValue('--ink').trim() || '#1d2b3a';
+    const orange = css.getPropertyValue('--orange').trim() || '#e8761c';
+    const green = css.getPropertyValue('--green').trim() || '#2a6f4f';
+    g.fillStyle = '#26313f';
+    g.beginPath(); g.ellipse(88, 116, 70, 86, 0, 0, Math.PI * 2); g.fill();
+    g.fillStyle = '#fbf6ee';
+    g.beginPath(); g.ellipse(88, 128, 50, 68, 0, 0, Math.PI * 2); g.fill();
+    g.fillStyle = green;
+    g.beginPath(); g.arc(88, 140, 15, 0, Math.PI * 2); g.fill();
+    g.fillStyle = ink;
+    g.beginPath(); g.arc(70, 76, 6, 0, Math.PI * 2); g.arc(106, 76, 6, 0, Math.PI * 2); g.fill();
+    g.fillStyle = orange;
+    g.beginPath(); g.moveTo(78, 90); g.lineTo(98, 90); g.lineTo(88, 104); g.closePath(); g.fill();
+    g.beginPath(); g.ellipse(64, 200, 18, 7, 0, 0, Math.PI * 2); g.ellipse(112, 200, 18, 7, 0, 0, Math.PI * 2); g.fill();
+  })();
+</script>
+
+</body>
+</html>
